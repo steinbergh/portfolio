@@ -3,14 +3,14 @@ layout: layouts/base.njk
 ---
 
 <main>
-	<h1>{{ title }}</h1>
 	<article>
+		<h1>{{ title }}</h1>
 		{{ content | safe }}
-    {% if projectUrl %}
-		{%- set ctaText -%}
-      {{ 'Website' if tags == 'web' else 'Case Study' }}
-    {%- endset -%}
-		<a href="{{ projectUrl }}">View {{ ctaText }} Here<span>→</span></a>
+		{% if projectUrl %}
+		<a href="{{ projectUrl }}">
+			{{"View {{ 'Website' if tags == 'web' else 'Case Study' }} Here"}}
+			<span>→</span>
+		</a>
 		{% endif %}
 	</article>
 </main>
