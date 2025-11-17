@@ -8,7 +8,7 @@ layout: layouts/base.njk
 		{{ content | safe }}
 		{% if projectUrl %}
 		<a href="{{ projectUrl }}">
-			{{"View {{ 'Website' if tags == 'web' else 'Case Study' }} Here"}}
+			View {{ 'Website' if tags == 'web' else 'Case Study' }} Here
 			<span>→</span>
 		</a>
 		{% endif %}
