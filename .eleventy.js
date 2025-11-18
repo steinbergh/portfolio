@@ -10,7 +10,6 @@ export default function (eleventyConfig) {
 		useLayouts: false,
 
 		compile: async function (inputContent, inputPath) {
-			console.log(inputPath);
 			let parsed = path.parse(inputPath);
 			// Don’t compile file names that start with an underscore
 			if (parsed.name.startsWith("_")) {

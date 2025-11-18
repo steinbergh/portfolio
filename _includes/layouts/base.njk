@@ -15,6 +15,14 @@
 		<link rel="stylesheet" href="/public/css/style.css" />
 	</head>
 	<body>
+		<div class="px-grid">
+			{% for px in range(0, 100) %}
+			<div
+				style="--i: {{ loop.index0 }};"
+				class="px px-{{ loop.index0 }}"
+			></div>
+			{% endfor %}
+		</div>
 		{{ content | safe }}
 	</body>
 </html>

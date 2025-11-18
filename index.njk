@@ -3,6 +3,8 @@ layout: layouts/base.njk
 templateEngineOverride: md, njk
 ---
 
+{% from "partials/card.njk" import card %}
+
 <main>
 	<section>
 		<h1>Hi, I'm Henry!</h1>
@@ -13,10 +15,16 @@ templateEngineOverride: md, njk
 		</p>
 	</section>
 	<section>
-		<ul>
+		<h2>Work</h2>
+		<ul class="card-grid">
 			{%- for work in collections.web -%}
 			<li>
-				<a href="{{ work.url }}">{{ work.data.title }}</a>
+				{{
+					card({
+						title: work.data.title,
+						url: work.data.projectUrl
+					})
+				}}
 			</li>
 			{%- endfor -%}
 		</ul>
