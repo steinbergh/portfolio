@@ -25,6 +25,15 @@ templateEngineOverride: md, njk
 					})
 				}}
 			</li>
+			{%- endfor -%} {%- for work in collections.museum -%}
+			<li>
+				{{
+					card({
+						title: work.data.title,
+						url: work.data.projectUrl
+					})
+				}}
+			</li>
 			{%- endfor -%}
 		</ul>
 	</section>
