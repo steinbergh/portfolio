@@ -29,4 +29,8 @@ export default function (eleventyConfig) {
 			};
 		},
 	});
+
+	eleventyConfig.addPassthroughCopy({
+		[`public/meta/`]: "/public/meta/",
+	});
 }
