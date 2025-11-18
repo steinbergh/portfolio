@@ -32,4 +32,10 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
 		[`public/meta/`]: "/public/meta/",
 	});
+
+	return {
+		dir: {
+			output: "docs",
+		},
+	};
 }

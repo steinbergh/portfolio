@@ -1,8 +1,8 @@
 {% macro card(params) %}
 <article class="card">
-	<h3>{{ params.title }}</h3>
-	<a href="{{ params.url }}" target="_blank" referrerpolicy=""
-		>Check it out <span>→</span></a
-	>
+	<a class="link" href="{{ params.url }}" target="_blank">
+		<h3>{{ params.title }}</h3>
+		<span>Check it out <span class="arrow arrow--external">→</span></span>
+	</a>
 </article>
 {% endmacro %}
