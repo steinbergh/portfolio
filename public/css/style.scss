@@ -1,5 +1,5 @@
 @use "normalize.scss";
-@use "variables.scss" as vars;
+@use "variables.scss" as v;
 @use "functions.scss";
 @use "mixins.scss" as m;
 @use "sass:math";
@@ -67,8 +67,8 @@ html {
 
 body {
 	//line-height: 1;
-	font-family: vars.$f-base;
-	@include m.font-size(vars.$baseFontSize);
+	font-family: v.$f-base;
+	@include m.font-size(v.$baseFontSize);
 	color: black;
 	position: relative;
 }
@@ -102,7 +102,12 @@ figure {
 }
 
 p {
-	@include m.font-size(19);
+	@include m.font-size(22);
+	line-height: 1.45;
+}
+
+h1 {
+	@include m.font-size(48);
 	line-height: 1.8em;
 }
 
@@ -116,9 +121,12 @@ h2 {
 	line-height: 1.8em;
 }
 
-p + p,
+p + p {
+	margin-top: 1rem;
+}
+
 section + section {
-	margin-top: 1.5em;
+	margin-top: 2rem;
 }
 
 dl,
@@ -165,21 +173,47 @@ main {
 
 .card-grid {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(auto, 1fr));
+	grid-template-columns: repeat(1, minmax(auto, 1fr));
 	gap: 1rem;
+	@include m.bp(small) {
+		grid-template-columns: repeat(2, minmax(auto, 1fr));
+	}
+
+	@include m.bp(medium) {
+		grid-template-columns: repeat(3, minmax(auto, 1fr));
+	}
 }
 
 .card {
-	aspect-ratio: 1 / 1;
+	aspect-ratio: 6 / 3;
 	border: 1px solid rgba(#000, 0.75);
-	transition: all 0.23s ease-in-out;
+	transition: all 0.4s v.$cubic-basic;
 	transform: translate(0px, 0px);
 	filter: drop-shadow(0px 0px 0px #000000);
 	background-color: #fff;
 	position: relative;
+
+	a {
+		transition: background-color 0.4s v.$cubic-basic;
+	}
+
+	.arrow {
+		position: relative;
+		display: inline-block;
+		transform: translateX(0rem);
+		transition: transform 0.4s v.$cubic-basic;
+	}
+
 	&:hover {
 		filter: drop-shadow(-0.5rem 0.5rem 0px #000000);
 		transform: translate(0.5rem, -0.5rem);
+		a {
+			background-color: rgba(cornflowerblue, 0.25);
+		}
+
+		.arrow {
+			transform: translateX(0.5rem);
+		}
 	}
 
 	a {
@@ -193,8 +227,13 @@ main {
 		width: 100%;
 		padding: 1.5rem;
 		color: currentColor;
+		background-color: #fff;
 		> * {
 			color: currentColor;
 		}
+	}
+
+	@include m.bp(small) {
+		aspect-ratio: 1 / 1;
 	}
 }
